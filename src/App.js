@@ -1,18 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import {FacebookIcon, FacebookShareButton, TwitterIcon, TwitterShareButton,} from "react-share";
-import 'bootstrap/dist/css/bootstrap.min.css'
-import {Button, Dropdown, DropdownButton} from 'react-bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {Button, Dropdown, DropdownButton} from 'react-bootstrap';
 
 export default function App() {
   const [text, setText] = useState("");
   const [author, setAuthor] = useState("");
   const [topic, setTopic] = useState("");
 
-  const famousApi = topic == ""? 'http://api.quotable.io/random?tags=famous-quotes' : `http://api.quotable.io/random?tags=famous-quotes,${topic}`;
+  const famousApi = topic == ""? 'https://api.quotable.io/random?tags=famous-quotes' : `http://api.quotable.io/random?tags=famous-quotes,${topic}`;
   const topicTitle = topic == ""? `All topics` : topic.charAt(0).toUpperCase() + topic.slice(1);
   
   const newQuote=()=>{
-    fetch(`http://api.quotable.io/random?tags=${topic}`)
+    fetch(`https://api.quotable.io/random?tags=${topic}`)
     .then(quote => quote.json())
     .then(quote=>{
       setText(quote.content);
